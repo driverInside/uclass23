@@ -94,6 +94,6 @@ Authorization: 1234
   "name": "Home"
 }
 ###
-GET http://localhost:8000/products
+GET http://localhost:8000/products?size=20
 Content-Type: application/json
 Authorization: 1234

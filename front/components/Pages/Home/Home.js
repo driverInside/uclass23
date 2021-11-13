@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import Page from '../Page'
 import Layout from '../../Layout'
+import List from '../../Products/List'
 
-export default function Home () {
+export default function Home() {
   const [token, setToken] = useState('')
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function Home () {
   return (
     <Page>
       <Layout>
-        <h1>yo soy la pagina de home {token}</h1>
+        <List />
       </Layout>
     </Page>
   )
