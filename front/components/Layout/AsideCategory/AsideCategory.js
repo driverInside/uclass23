@@ -29,14 +29,14 @@ const AsideCategory = () => {
   console.log(JSON.stringify(appContext))
 
   return (
-    <article class="panel is-primary">
+    <article className='panel is-primary'>
       <h2>se tiene que mostrar</h2>
-      <a class="panel-block is-active">
+      <a className='panel-block is-active'>
         {JSON.stringify(appContext)}
       </a>
       {
-        categoriesState.map(category =>
-          <a class="panel-block is-active">
+        categoriesState.map((category, index) =>
+          <a className='panel-block is-active' key={index}>
             {category.name}
           </a>
         )
