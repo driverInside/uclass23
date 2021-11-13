@@ -8,6 +8,7 @@ Content-Type: application/json
 
 
 ### 
+# @name login
 POST {{hostname}}/auth/login
 Content-Type: application/json
 
@@ -16,10 +17,14 @@ Content-Type: application/json
 	"password": "http code 418"
 }
 
+###
+@authToken = {{login.response.body.token}}
+
 # toString()
 ### 
 POST {{hostname}}/users
 Content-Type: application/json
+Authorization: {{authToken}}
 
 {
 	"email":"hps@ucamp.com",
@@ -28,3 +33,21 @@ Content-Type: application/json
     "username": "driverInside",
     "permissions": ["me", "orders:create", "orders:create"]
 }
+
+###
+POST http://localhost:8000/users
+Content-Type: application/json
+Authorization: 1234
+
+{
+	"email":"alfredo@ucamp.com",
+	"password": "http code 418",
+    "name": "Hiram",
+    "username": "arlequeen",
+    "permissions": ["me", "orders:create", "orders:create"]
+}
+
+###
+GET http://localhost:8000/me
+Content-Type: application/json
+Authorization: {{authToken}}

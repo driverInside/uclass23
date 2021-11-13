@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+
 import { FiLogIn } from 'react-icons/fi'
 import { BiUser } from 'react-icons/bi'
 import { AiOutlineLock } from 'react-icons/ai'
@@ -11,6 +13,7 @@ export default function Login () {
   const [formData, setFormData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
+  const router = useRouter()
 
   const handleOnChange = (evt) => {
     setFormData({
@@ -35,17 +38,28 @@ export default function Login () {
     })
     .then(response => {
       console.log('----------------------')
-      console.log(response.data)
+      console.log(`user: ${response.data?.user}`)
+      console.log(`token: ${response.data?.token}`)
       console.log('----------------------')
-      // TODO: redireccionar
-      // TODO: salvar el token de la respuesta
 
+      window.sessionStorage.setItem('token', response.data?.token)
+      // TODO: salvar el token de la respuesta
+      // TODO: redireccionar
+      router.push('/home')
     })
     .catch(err => {
+      // no hacer en producción
+      // 5 rangos de códigos http
+      // 1xx info
+      // 2xx successful
+      // 3xx delegar la acción al cliente
+      // 4xx client error
+      // 5xx server error
+      console.error(err)
       setIsError(true)
     })
     .finally(() => {
-      // setIsLoading(false)
+      setIsLoading(false)
     })
 
   }
@@ -83,7 +97,7 @@ export default function Login () {
           )}
           <div className='field'>
             <p className='control'>
-              <button className={`button is-medium is-fullwidth ${isLoading && 'is-loading'}`}>
+              <button className={`button is-medium is-fullwidth is-primary ${isLoading && 'is-loading'}`}>
                 <span>Ingresar</span>
                 <span className='icon'>
                   <FiLogIn />
