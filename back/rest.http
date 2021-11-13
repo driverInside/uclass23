@@ -42,8 +42,8 @@ Authorization: 1234
 {
 	"email":"alfredo@ucamp.com",
 	"password": "http code 418",
-    "name": "Hiram",
-    "username": "arlequeen",
+    "name": "Fredo",
+    "username": "arlequin",
     "permissions": ["me", "orders:create", "orders:create"]
 }
 
@@ -51,3 +51,49 @@ Authorization: 1234
 GET http://localhost:8000/me
 Content-Type: application/json
 Authorization: {{authToken}}
+
+
+###
+POST http://localhost:8000/categories
+Content-Type: application/json
+Authorization: 1234
+
+{
+  "name": "Sports"
+}
+###
+POST http://localhost:8000/categories
+Content-Type: application/json
+Authorization: 1234
+
+{
+  "name": "Books"
+}
+###
+POST http://localhost:8000/categories
+Content-Type: application/json
+Authorization: 1234
+
+{
+  "name": "Tech"
+}
+###
+POST http://localhost:8000/categories
+Content-Type: application/json
+Authorization: 1234
+
+{
+  "name": "Games"
+}
+###
+POST http://localhost:8000/categories
+Content-Type: application/json
+Authorization: 1234
+
+{
+  "name": "Home"
+}
+###
+GET http://localhost:8000/products
+Content-Type: application/json
+Authorization: 1234
