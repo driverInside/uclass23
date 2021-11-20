@@ -20,10 +20,14 @@ const CartSchema = new Schema({
         required: true
       },
       category: {
-        type: 'text'
+        type: Schema.Types.ObjectId
       } 
     }
-  ]
+  ],
+  completed: {
+    type: Boolean,
+    default: false
+  }
 }, {
   versionKey: false,
   timestamps: true

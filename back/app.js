@@ -13,6 +13,7 @@ const authRouter = require('./routes/auth');
 const meRouter = require('./routes/me');
 const categoryRouter = require('./routes/categories');
 const productsRouter = require('./routes/products');
+const cartsRouter = require('./routes/cart')
 
 const app = express();
 
@@ -33,11 +34,12 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter)
 
 // protected
-// app.use(authMiddleware)
+app.use(authMiddleware)
 app.use('/users', usersRouter)
 app.use('/me', meRouter)
 app.use('/categories', categoryRouter)
 app.use('/products', productsRouter)
+app.use('/carts', cartsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

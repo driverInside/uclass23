@@ -93,7 +93,82 @@ Authorization: 1234
 {
   "name": "Home"
 }
+
 ###
 GET http://localhost:8000/products
 Content-Type: application/json
-Authorization: 1234
+Authorization: {{authToken}}
+
+###
+POST http://localhost:8000/carts
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "products": [
+    {
+      "_id": "6198392b40eb632cb1d16af4",
+      "name": "Awesome Granite Pants",
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "price": 757,
+      "category": "61983923dd1e39c013499ec9"
+    },
+    {
+      "_id": "6198392b40eb632cb1d16af8",
+      "name": "Incredible Granite Cheese",
+      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "price": 454,
+      "category": "61983923dd1e39c013499ec9"
+    },
+    {
+      "_id": "6198392b40eb632cb1d16afc",
+      "name": "Handmade Granite Chips",
+      "price": 52,
+      "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "category": "61983923dd1e39c013499ec9"
+    },
+    {
+      "_id": "6198392b40eb632cb1d16b00",
+      "name": "Practical Cotton Computer",
+      "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "price": 824,
+      "category": "6198391add1e39c013499ec1"
+    }
+  ]
+}
+
+###
+POST http://localhost:8000/carts
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "products": [
+    {
+      "_id": "6198392b40eb632cb1d16afa",
+      "name": "Refined Wooden Hat",
+      "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+      "price": 930,
+      "category": "61983923dd1e39c013499ec9"
+    },
+    {
+      "_id": "6198392b40eb632cb1d16b02",
+      "name": "Intelligent Frozen Salad",
+      "description": "The Football Is Good For Training And Recreational Purposes",
+      "price": 324,
+      "category": "61983923dd1e39c013499ec9"
+    },
+    {
+      "_id": "6198392b40eb632cb1d16b04",
+      "name": "Awesome Metal Pizza",
+      "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "price": 426,
+      "category": "61983923dd1e39c013499ec9"
+    }
+  ]
+}
+
+###
+GET http://localhost:8000/carts
+Content-Type: application/json
+Authorization: {{authToken}}
