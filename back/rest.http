@@ -29,9 +29,9 @@ Authorization: {{authToken}}
 {
 	"email":"hps@ucamp.com",
 	"password": "http code 418",
-    "name": "Hiram",
-    "username": "driverInside",
-    "permissions": ["me", "orders:create", "orders:create"]
+  "name": "Hiram",
+  "username": "driverInside",
+  "permissions": ["me", "orders:create", "orders:create"]
 }
 
 ###
@@ -46,6 +46,19 @@ Authorization: 1234
     "username": "arlequin",
     "permissions": ["me", "orders:create", "orders:create"]
 }
+
+### 
+# @name loginFrodo
+POST {{hostname}}/auth/login
+Content-Type: application/json
+
+{
+	"email":"alfredo@ucamp.com",
+	"password": "http code 418"
+}
+
+###
+@authToken = {{login.response.body.token}}
 
 ###
 GET http://localhost:8000/me
@@ -171,4 +184,36 @@ Authorization: {{authToken}}
 ###
 GET http://localhost:8000/carts
 Content-Type: application/json
-Authorization: {{authToken}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MTRiNWQ0NzNlY2FjZmIwMWUwOGEiLCJlbWFpbCI6ImFsZnJlZG9AdWNhbXAuY29tIiwibmFtZSI6IkZyZWRvIiwidXNlcm5hbWUiOiJhcmxlcXVpbiIsInBlcm1pc3Npb25zIjpbIm1lIiwib3JkZXJzOmNyZWF0ZSIsIm9yZGVyczpjcmVhdGUiXSwiY3JlYXRlZEF0IjoiMjAyMS0xMS0yMFQxNTozMTowMS4yNDJaIiwidXBkYXRlZEF0IjoiMjAyMS0xMS0yMFQxNTozMTowMS4yNDJaIiwiaWF0IjoxNjM3NDIyOTI4fQ.gJE27Hrb2vZQS1QpBxLWJ86I77Ccg3R8EiTmy-xLZJY
+
+
+###
+GET http://localhost:8000/carts
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk4MzRhOTkzNzgzYTY3ZTU3OGRhMDUiLCJlbWFpbCI6Imhwc0B1Y2FtcC5jb20iLCJuYW1lIjoiSGlyYW0iLCJ1c2VybmFtZSI6ImRyaXZlckluc2lkZSIsInBlcm1pc3Npb25zIjpbIm1lIiwib3JkZXJzOmNyZWF0ZSIsIm9yZGVyczpjcmVhdGUiXSwiY3JlYXRlZEF0IjoiMjAyMS0xMS0xOVQyMzozNTowNS41NDFaIiwidXBkYXRlZEF0IjoiMjAyMS0xMS0xOVQyMzozNTowNS41NDFaIiwiaWF0IjoxNjM3NDIyOTYzfQ.RxXqoDB2QcWFJPokw5YQPhkci9C9lxXDvxmRWjXRb3E
+
+
+
+###
+POST http://localhost:8000/carts
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk5MTRiNWQ0NzNlY2FjZmIwMWUwOGEiLCJlbWFpbCI6ImFsZnJlZG9AdWNhbXAuY29tIiwibmFtZSI6IkZyZWRvIiwidXNlcm5hbWUiOiJhcmxlcXVpbiIsInBlcm1pc3Npb25zIjpbIm1lIiwib3JkZXJzOmNyZWF0ZSIsIm9yZGVyczpjcmVhdGUiXSwiY3JlYXRlZEF0IjoiMjAyMS0xMS0yMFQxNTozMTowMS4yNDJaIiwidXBkYXRlZEF0IjoiMjAyMS0xMS0yMFQxNTozMTowMS4yNDJaIiwiaWF0IjoxNjM3NDIyOTI4fQ.gJE27Hrb2vZQS1QpBxLWJ86I77Ccg3R8EiTmy-xLZJY
+
+{
+  "products": [
+    {
+      "_id": "6198392b40eb632cb1d16afa",
+      "name": "Refined Wooden Hat",
+      "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+      "price": 930,
+      "category": "61983923dd1e39c013499ec9"
+    },
+    {
+      "_id": "6198392b40eb632cb1d16b02",
+      "name": "Intelligent Frozen Salad",
+      "description": "The Football Is Good For Training And Recreational Purposes",
+      "price": 324,
+      "category": "61983923dd1e39c013499ec9"
+    }
+  ]
+}

@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import Page from '../Page'
 import Layout from '../../Layout'
-import CartComponent from '../../Cart'
 
 
-export default function Cart () {
-  const [cart, setCart] = useState()
-  const [token, setToken] = useState('')
-
-  useEffect(() => {
-    const sToken = window.sessionStorage.getItem('token')
-    setToken(sToken)
-
-    
-  }, [])
-
+export default function Cart ({ carts }) {
+  console.log('----------------------')
+  console.log(carts)
+  console.log('----------------------')
   return (
     <Page>
       <Layout>
-        <CartComponent />
+        <h1>yo soy la pagina de cart</h1>
+        {
+          carts.map((cart, index) => {
+            return (
+              <p key={index}>
+                <strong>Yo soy un carrito de compras, ajua {cart._id} {cart.userId}</strong>
+              </p>
+            )
+          })
+        }
       </Layout>
     </Page>
   )

@@ -1,6 +1,22 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 export default function Header () {
+  const [token, setToken] = useState('')
+  const router = useRouter()
+
+  useEffect(() => {
+    const sToken = window.sessionStorage.getItem('token')
+    setToken(sToken)
+  }, [])
+  const handleLogOut = evt => {
+    evt.preventDefault()
+    evt.stopPropagation()
+
+    window.sessionStorage.setItem('token', '')
+    router.push('/')
+  }
   return (
     <>
       <Head>
@@ -59,12 +75,22 @@ export default function Header () {
           <div className='navbar-end'>
             <div className='navbar-item'>
               <div className='buttons'>
-                <a className='button is-primary'>
-                  <strong>Sign up</strong>
-                </a>
-                <a className='button is-light'>
-                  Log in
-                </a>
+                {!token && (
+                  <>
+                    <a className='button is-primary'>
+                      <strong>Sign up</strong>
+                    </a>
+                    <a className='button is-light'>
+                      Log in
+                    </a>
+                  </>
+                )}
+
+                {token && (
+                  <a className='button is-light' onClick={e => handleLogOut(e)}>
+                    Log out
+                  </a>
+                )}
               </div>
             </div>
           </div>

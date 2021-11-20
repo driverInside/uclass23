@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Page from '../Page'
 import Layout from '../../Layout'
 
-export default function Home () {
+export default function Home ({ children }) {
   const [token, setToken] = useState('')
 
   useEffect(() => {
@@ -14,6 +14,7 @@ export default function Home () {
     <Page>
       <Layout>
         <h1>yo soy la pagina de home</h1>
+        { children }
       </Layout>
     </Page>
   )

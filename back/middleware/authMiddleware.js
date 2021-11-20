@@ -47,9 +47,32 @@ const authMiddleware = (req, res, next) => {
     const decoded = jwt.verify(token, secret)
     req.user = decoded
   
-    next();
+    // const { method, path } = req
+
+    // let hasPermissions = false
+    // for (let i = 0; i < req.user.permissions.length; i++) {
+    //   const permissions = req.user.permissions[i];
+      
+    //   const [pUrl, pMethod] = permissions.split(':')
+
+    //   hasPermissions = path.replace('/', '') === pUrl && method.toLowerCase() == pMethod
+    // }
+
+    // if(hasPermissions) {
+    //   next();
+    // } else {
+      //   res.status(403)
+      //   return res.send({
+        //     error: 'No ps no tienes permisos',
+        //     code: 'x'
+        //   })
+        // }
+          next();
+
+
     
   } catch (error) {
+    console.error(error)
     res.status(403)
     return res.send({
       error: 'U shall not pass',
